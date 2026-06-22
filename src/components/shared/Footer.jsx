@@ -16,24 +16,26 @@ const Footer = () => {
   height={400}
   className="h-12 w-auto object-contain"
 />
-    <h6 className="footer-title text-[#2563EB] font-bold">DocAppoint</h6>
+    <h6 className="footer-title text-orange-400 font-bold">Arthub</h6>
     </div>
    
-    <p className=''>Providing high-quality medical care <br></br> through innovative digital health  solutions. <br></br> Your health, our priority.</p>
+    <p className=''>Providing high-quality art <br></br> for users to browse and purcahse. <br></br> Your choice, our priority.</p>
     
   </nav>
   <nav>
     <h6 className="footer-title">Contact</h6>
     <a className="link link-hover">Dhaka, Bangladesh</a>
     <a className="link link-hover">Phone: +880 1234-567890</a>
-    <a className="link link-hover">Email: support@DocAppoint.com</a>
+    <a className="link link-hover">Email: support@Arthub.com</a>
   </nav>
   <nav>
     <h6 className="footer-title">Legal</h6>
     <a className="link link-hover">Privacy Policy</a>
     <a className="link link-hover">Terms of Service</a>
-    <a className="link link-hover">© 2026 DocAppoint. All rights reserved.</a>
+    <a className="link link-hover">© 2026 Arthub. All rights reserved.</a>
   </nav>
+  {/* social */}
+  
   <nav>
     <h6 className="footer-title">Social</h6>
     <div className="grid grid-flow-col gap-4">
@@ -84,7 +86,7 @@ const Footer = () => {
           type="text"
           placeholder="username@site.com"
           className="input input-bordered join-item" />
-        <button className="btn btn-primary join-item">Subscribe</button>
+        <button className="btn bg-orange-500 hover:bg-orange-600 text-white">Subscribe</button>
       </div>
     </fieldset>
   </form>
