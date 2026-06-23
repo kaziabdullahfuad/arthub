@@ -40,140 +40,264 @@ export default function RegisterPage() {
         if (signUpError) {
             toast.error("Registration not succeed...")
         }
-       
+        else{
+            redirect("/")
+        }
 
 
     }
     console.log(errors);
 
     return (
-        <div>
-            <Card className="w-full max-w-lg border border-white/5  backdrop-blur-xl shadow-2xl p-4 mx-auto">
-                <CardHeader className="flex flex-col gap-1 items-center pb-6 text-center">
-                    {/* <Logo /> */}
-                    <Image 
-                      src={logo} 
-                      alt="logo" 
-                      width={400} 
-                      height={400}
-                      className="h-12 w-auto object-contain"
-                    />
-                    <h1 className="text-3xl font-extrabold tracking-tight  text-orange-400 font-bold">
-                        Create an Account
-                    </h1>
-                    <p className="text-slate-400 text-sm mt-1">
-                        Join Ticketo to book premium events or host your own organization.
-                    </p>
-                </CardHeader>
-                <CardBody className="gap-4">
-                    <Form onSubmit={handleSubmit(onSubmit)} className="space-y-4 w-full">
-                        <Label htmlFor="name">Full Name</Label>
+        <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-amber-100">
+    <div className="grid lg:grid-cols-2 min-h-screen">
 
+      {/* Left Branding Section */}
+      <div className="hidden lg:flex flex-col justify-center px-16 bg-gradient-to-br from-orange-500 via-orange-600 to-amber-500 text-white">
+        <Image
+          src={logo}
+          alt="ArtHub Logo"
+          width={250}
+          height={250}
+          className="mb-8 w-40 h-auto"
+        />
 
+        <h1 className="text-5xl font-extrabold leading-tight mb-6">
+          Discover &
+          <br />
+          Buy Original
+          <br />
+          Artworks
+        </h1>
 
-                        <Input
-                            {...register("name", { required: "Name is Required" })}
-                            id="name"
-                            placeholder="John Doe"
-                            className="w-full bg-slate-900/50 border-white/10 hover:border-pink-500/50 focus-within:!border-pink-500"
-                        />
-                        {
-                            errors.name && <p className="text-red-500">{errors.name.message}</p>
-                        }
-                        <Label htmlFor="email">Email Address</Label>
-                        <Input
-                            {...register("email", { required: "Email is Required" })}
-                            id="email"
-                            placeholder="john@example.com"
-                            type="email"
-                           
-                            className="w-full bg-slate-900/50 border-white/10 hover:border-pink-500/50 focus-within:!border-pink-500"
-                        />
-                        {
-                            errors.email && <p className="text-red-500">{errors.email.message}</p>
-                        }
-                        <Label htmlFor="image">Profile Image URL</Label>
+        <p className="text-lg text-orange-100 max-w-md">
+          Join ArtHub to explore unique artwork, support talented artists,
+          and showcase your own creative masterpieces to the world.
+        </p>
 
-                        <Input
-                            {...register("image", { required: "image is Required" })}
-                            type="file"
-                            accept="image/*"
-                            id="image"
-                            placeholder="https://example.com/avatar.jpg"
-                            className="w-full bg-slate-900/50 border-white/10 hover:border-pink-500/50 focus-within:!border-pink-500"
-                        />
-                        {
-                            errors.image && <p className="text-red-500">{errors.image.message}</p>
-                        }
+        <div className="mt-12 space-y-4">
+          <div className="flex items-center gap-3">
+            <span className="text-2xl">🎨</span>
+            <span>Browse exclusive artworks</span>
+          </div>
 
-                        <Label htmlFor="password">Password</Label>
-                        <Input
-                            {...register("password", {
-                                required: "Password is required",
-                                // pattern: {
-                                //     value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/,
-                                //     message:
-                                //         "Password must be at least 6 characters and contain at least one uppercase letter, one lowercase letter, and one number",
-                                // },
-                            })}
-                            id="password"
-                            placeholder="••••••••"
-                            type="password"
-                            className="w-full bg-slate-900/50 border-white/10 hover:border-pink-500/50 focus-within:!border-pink-500"
-                        />
-                        {
-                            errors.password && <p className="text-red-500">{errors.password.message}</p>
-                        }
+          <div className="flex items-center gap-3">
+            <span className="text-2xl">🖌️</span>
+            <span>Sell your own creations</span>
+          </div>
 
-                        <div className="flex flex-col gap-2 w-full">
-                            <Label htmlFor="role" className="text-sm font-semibold text-slate-300">Select Role</Label>
-                            <select
-                                id="role"
-                                {...register("role", { required: "Role is required" })} className="w-full bg-slate-900/50 border-white/10 hover:border-pink-500/50 focus-within:!border-pink-500 p-3">
-                                <option value="buyer">
-                                    Buyer
-                                </option>
-                                <option value="artist">
-                                    Artist
-                                </option>
-                            </select>
-                            {
-                                errors.role && <p className="text-red-500">{errors.role.message}</p>
-                            }
-                        </div>
-
-                        <Button
-                            type="submit"
-                            className="w-full bg-gradient-to-r from-pink-500 to-indigo-600 text-white font-bold h-12 shadow-lg shadow-pink-500/10 hover:shadow-pink-500/20"
-                            radius="lg"
-                        >
-                            Create Account
-                        </Button>
-                    </Form>
-
-                    <div className="flex items-center my-4">
-                        <div className="flex-grow border-t border-white/5" />
-                        <span className="mx-4 text-xs text-slate-500 font-semibold uppercase">Or Sign Up With</span>
-                        <div className="flex-grow border-t border-white/5" />
-                    </div>
-
-                    <Button
-                        variant="bordered"
-                        className="w-full border-white/10 hover:bg-white/5 hover:border-white/20 text-white font-semibold h-11"
-                        radius="lg"
-                        startContent={<FaGoogle className="text-pink-500" />}
-                    >
-                        Google OAuth
-                    </Button>
-
-                    <p className="text-center text-sm text-slate-400 mt-6">
-                        Already have an account?{" "}
-                        <Link href="/login" className="text-pink-500 hover:text-pink-400 font-semibold hover:underline">
-                            Log In
-                        </Link>
-                    </p>
-                </CardBody>
-            </Card>
+          <div className="flex items-center gap-3">
+            <span className="text-2xl">🌎</span>
+            <span>Connect with artists worldwide</span>
+          </div>
         </div>
+      </div>
+
+      {/* Right Form Section */}
+      <div className="flex items-center justify-center p-6">
+
+        <Card className="w-full max-w-xl bg-white/90 backdrop-blur-xl border border-orange-100 shadow-[0_20px_60px_rgba(249,115,22,0.15)] rounded-3xl p-6">
+
+          <CardHeader className="flex flex-col gap-2 items-center pb-6 text-center">
+
+            <Image
+              src={logo}
+              alt="logo"
+              width={400}
+              height={400}
+              className="h-16 w-auto object-contain"
+            />
+
+            <h1 className="text-4xl font-extrabold bg-gradient-to-r from-orange-500 to-amber-500 bg-clip-text text-transparent">
+              Create Account
+            </h1>
+
+            <p className="text-gray-500 text-sm">
+              Join ArtHub to discover, collect, and showcase extraordinary
+              artwork.
+            </p>
+          </CardHeader>
+
+          <CardBody className="gap-4">
+
+            <Form
+              onSubmit={handleSubmit(onSubmit)}
+              className="space-y-4 w-full"
+            >
+              <div className="w-full">
+                <Label
+                  htmlFor="name"
+                  className="text-gray-700 font-medium mb-1"
+                >
+                  Full Name
+                </Label>
+
+                <Input
+                  {...register("name", {
+                    required: "Name is Required",
+                  })}
+                  id="name"
+                  placeholder="John Doe"
+                  className="w-full"
+                />
+
+                {errors.name && (
+                  <p className="text-red-500 text-sm mt-1">
+                    {errors.name.message}
+                  </p>
+                )}
+              </div>
+
+              <div className="w-full">
+                <Label
+                  htmlFor="email"
+                  className="text-gray-700 font-medium mb-1"
+                >
+                  Email Address
+                </Label>
+
+                <Input
+                  {...register("email", {
+                    required: "Email is Required",
+                  })}
+                  id="email"
+                  type="email"
+                  placeholder="john@example.com"
+                  className="w-full"
+                />
+
+                {errors.email && (
+                  <p className="text-red-500 text-sm mt-1">
+                    {errors.email.message}
+                  </p>
+                )}
+              </div>
+
+              <div className="w-full">
+                <Label
+                  htmlFor="image"
+                  className="text-gray-700 font-medium mb-1"
+                >
+                  Profile Image
+                </Label>
+
+                <Input
+                  {...register("image", {
+                    required: "image is Required",
+                  })}
+                  type="file"
+                  accept="image/*"
+                  id="image"
+                  className="w-full"
+                />
+
+                {errors.image && (
+                  <p className="text-red-500 text-sm mt-1">
+                    {errors.image.message}
+                  </p>
+                )}
+              </div>
+
+              <div className="w-full">
+                <Label
+                  htmlFor="password"
+                  className="text-gray-700 font-medium mb-1"
+                >
+                  Password
+                </Label>
+
+                <Input
+                  {...register("password", {
+                    required: "Password is required",
+                  })}
+                  id="password"
+                  type="password"
+                  placeholder="••••••••"
+                  className="w-full"
+                />
+
+                {errors.password && (
+                  <p className="text-red-500 text-sm mt-1">
+                    {errors.password.message}
+                  </p>
+                )}
+              </div>
+
+              <div className="flex flex-col gap-2 w-full">
+                <Label
+                  htmlFor="role"
+                  className="text-gray-700 font-medium"
+                >
+                  Select Role
+                </Label>
+
+                <select
+                  id="role"
+                  {...register("role", {
+                    required: "Role is required",
+                  })}
+                  className="w-full p-3 rounded-xl border border-orange-200 bg-white outline-none focus:border-orange-500"
+                >
+                  <option value="buyer">
+                    Buyer
+                  </option>
+
+                  <option value="artist">
+                    Artist
+                  </option>
+                </select>
+
+                {errors.role && (
+                  <p className="text-red-500 text-sm">
+                    {errors.role.message}
+                  </p>
+                )}
+              </div>
+
+              <Button
+                type="submit"
+                className="w-full bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold h-12 rounded-xl hover:scale-[1.02] transition-all"
+              >
+                Create Account
+              </Button>
+            </Form>
+
+            <div className="flex items-center my-4">
+              <div className="flex-grow border-t border-orange-100" />
+
+              <span className="mx-4 text-xs text-gray-500 font-semibold uppercase">
+                Continue With
+              </span>
+
+              <div className="flex-grow border-t border-orange-100" />
+            </div>
+
+            <Button
+              variant="bordered"
+              className="w-full border-orange-200 hover:bg-orange-50 text-gray-700 font-semibold h-11"
+              radius="lg"
+              startContent={
+                <FaGoogle className="text-orange-500" />
+              }
+            >
+              Google OAuth
+            </Button>
+
+            <p className="text-center text-sm text-gray-500 mt-6">
+              Already have an account?{" "}
+              <Link
+                href="/login"
+                className="text-orange-500 hover:text-orange-600 font-semibold hover:underline"
+              >
+                Log In
+              </Link>
+            </p>
+
+          </CardBody>
+        </Card>
+
+      </div>
+    </div>
+  </div>
     );
 }
